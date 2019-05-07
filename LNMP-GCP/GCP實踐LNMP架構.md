@@ -140,35 +140,35 @@
 
 - 修改php.d目錄底下的www.conf預設參數
     - sudo vi /etc/php-fpm.d/www.conf
-  - 修改內容-----------------------------
-    user = nginx
-    group = nginx
-    listen.owner = nobody
-    listen.group = nobody
-  -  -----------------------------------修改內容
+  -  修改內容
+   - user = nginx
+   - group = nginx
+   - listen.owner = nobody
+   - listen.group = nobody
+  -  修改內容
    - 將註解 ; 去掉。
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556504401829_php-fpm-www-conf.png)
 
 - 新增測試頁面 info.php
-    sudo vi /usr/share/nginx/html/info.php
-    <?php phpinfo(); ?>
+   - sudo vi /usr/share/nginx/html/info.php
+   - <?php phpinfo(); ?>
 - 重新啟動服務
-    sudo systemctl restart php-fpm
-    sudo systemctl restart nginx
+   - sudo systemctl restart php-fpm
+   - sudo systemctl restart nginx
 - 測試網頁
-    開啟瀏覽器，在網址處輸入
-    該主機IP/info.php
+   - 開啟瀏覽器，在網址處輸入
+   - 該主機IP/info.php
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556504865646_php-web.png)
 
 # 將MySQL與PHP進行串接
 - 安裝與資料庫進行連接的相關套件
-    sudo yum install -y php72w-my*
+   - sudo yum install -y php72w-my*
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556514557621_image.png)
 
 - 出現以上錯誤，改為以下指令—
-    sudo yum install -y php72w-my* --skip-broken
+   - sudo yum install -y php72w-my* --skip-broken
 - 重新啟動php-fpm
-    sudo systemctl restart php-fpm
+   - sudo systemctl restart php-fpm
 - 重新載入畫面
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556514839235_image.png)
 
@@ -179,18 +179,18 @@
 
 ----------
 - 安裝編譯 gcc 所需要的函式庫：
-    sudo yum install -y libmpc-devel mpfr-devel gmp-devel
+   - sudo yum install -y libmpc-devel mpfr-devel gmp-devel
 - 用 `wget` 下載 gcc ：
-    wget http://mirrors.concertpass.com/gcc/releases/gcc-6.3.0/gcc-6.3.0.tar.bz2
+   - wget http://mirrors.concertpass.com/gcc/releases/gcc-6.3.0/gcc-6.3.0.tar.bz2
 - 解壓縮 gcc 原始碼：
-    tar jxvf gcc-6.3.0.tar.bz2
+   - tar jxvf gcc-6.3.0.tar.bz2
 - 進入 gcc 原始碼目錄：
-    cd gcc-6.3.0/
+   - cd gcc-6.3.0/
 - 下載其他必要的原始碼：
-    contrib/download_prerequisites
+   - contrib/download_prerequisites
 - 建立編譯用的目錄：
-    mkdir ../gcc-build
-    cd ../gcc-build
+   - mkdir ../gcc-build
+   - cd ../gcc-build
 - 使用以下參數執行 `configure`：
     ../gcc-6.3.0/configure -v \
       --enable-languages=c,c++ \
@@ -245,15 +245,15 @@
     sudo firewall-cmd --reload
 ## 啟動redis服務
 - 進入src目錄裡執行redis-server和redis.conf，檢查埠號確認該服務是否有啟動。
-    cd src
-    ./redis-server ../redis.conf
-    netstat -nlpt
+   - cd src
+   - ./redis-server ../redis.conf
+   - netstat -nlpt
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556517518292_image.png)
 
 - 測試連接：
-    到src目錄下執行redis-cli
-    輸入：
-    auth 密碼
+   - 到src目錄下執行redis-cli
+   - 輸入：
+   - auth [密碼]
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556517758903_image.png)
 
 ----------
@@ -264,10 +264,10 @@
 ## 由於使用yum安裝PHPMyAdmin會出現版本衝突的BUG，所以要使用composer套件進行安裝。
 ## 安裝Composer([官方指南](https://getcomposer.org/download/))
 - 安裝composer
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-    php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-    php composer-setup.php
-    php -r "unlink('composer-setup.php');"
+   - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+   - php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+   - php composer-setup.php
+   - php -r "unlink('composer-setup.php');"
 
 指令分別為：
 
