@@ -10,64 +10,64 @@
 ----------
 # 一、安裝Nginx 1.14.2
 - 更新套件庫
-    sudo yum update -y
-    sudo yum -y install epel-release
+   - sudo yum update -y
+   - sudo yum -y install epel-release
 - 建立一個nginx的repo
-    sudo vi /etc/yum.repos.d/nginx.repo
-    -------------------------------------------------------------------------------------
-    [nginx]
-    name=nginx repo
-    baseurl=http://nginx.org/packages/centos/7/$basearch/
-    gpgcheck=0
-    enabled=1
-    -------------------------------------------------------------------------------------
+   - sudo vi /etc/yum.repos.d/nginx.repo
+   - -------------------------------------------------------------------------------------
+   - [nginx]
+   - name=nginx repo
+   - baseurl=http://nginx.org/packages/centos/7/$basearch/
+   - gpgcheck=0
+   - enabled=1
+   - -------------------------------------------------------------------------------------
 - 安裝指定版本
-    sudo yum install -y nginx-1.14.2
+   - sudo yum install -y nginx-1.14.2
 - 查看安裝目錄及設定檔
-    nginx -t
+   - nginx -t
 - 起動nginx服務
-    sudo systemctl start nginx
+   - sudo systemctl start nginx
 - 設定開機自動啟動
-    sudo systemctl enable nginx
+   - sudo systemctl enable nginx
 - 在瀏覽器輸入ip測試服務是否啟用
 ****![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556446686100_Nginx-01.png)
 
 # 二、安裝PHP 7.2.11
 - Centos套件庫來源並沒有PHP7.x，所以要自行加入套件來源-epel
-    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   - sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 - webtatic
-    sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+   - sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 - PHP
-    sudo yum install -y php72w-cli php72w-fpm php72w-common php72w-pdo php72w-mbstring
+   - sudo yum install -y php72w-cli php72w-fpm php72w-common php72w-pdo php72w-mbstring
 - 確認安裝php版本(我安裝的是7.2.16)
-    php -v
+   - php -v
 - 啟用 php 服務並 設定開機時啟動
-    sudo systemctl start php-fpm 
-    sudo systemctl enable php-fpm
+   - sudo systemctl start php-fpm 
+   - sudo systemctl enable php-fpm
 
 
 # 三、安裝MySQL 8.0.15
 - #參照[官網(Download MySQL Yum Repository)](https://dev.mysql.com/downloads/repo/yum/) 找尋指定版本
     ***
-    rpm -Uvh https://repo.mysql.com/mysql57-community-release-el7-11.noarch.rpm
-    yum -y --enablerepo=mysql80-community install mysql-community-server
-    systemctl start mysqld.service
+   - rpm -Uvh https://repo.mysql.com/mysql57-community-release-el7-11.noarch.rpm
+   - yum -y --enablerepo=mysql80-community install mysql-community-server
+   - systemctl start mysqld.service
     ***
 - 啟動MySQL server
-    sudo service mysqld start
+   - sudo service mysqld start
 - 啟動MySQL
-    sudo systemctl start mysqld
+   - sudo systemctl start mysqld
 - 設定開機自行啟動
-    sudo systemctl enable mysqld
+   - sudo systemctl enable mysqld
 - 檢視預設密碼
-    grep "A temporary password" /var/log/mysqld.log
+   - grep "A temporary password" /var/log/mysqld.log
     顯示結果：
-    [gemgt4gtii@lnmp-lab ~]$ grep "A temporary password" /var/log/mysqld.log
+   - [gemgt4gtii@lnmp-lab ~]$ grep "A temporary password" /var/log/mysqld.log
     
-    2019-04-28T12:52:01.986505Z 5 \[Note\] [MY-010454] [Server] A temporary password is generated for root@localhost: 9ur%Osgfdzy.
+   - 2019-04-28T12:52:01.986505Z 5 \[Note\] [MY-010454] [Server] A temporary password is generated for root@localhost: 9ur%Osgfdzy.
     -------------------------------------------------------------------------------------
 - 修改MySQL的root密碼
-    mysql -u root -p
+   - mysql -u root -p
    - ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'a_A@123456';
    - ALTER USER USER() IDENTIFIED BY 'a_A@123456';
    - ALTER USER USER() IDENTIFIED BY 'abc';
@@ -82,9 +82,9 @@
 ----------
 # 防火牆設定：
 - 開啟遠端訪問
-    sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
-    sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
-    sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
+   - sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+   - sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
+   - sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
 - 重新啟動防火牆
    - sudo firewall-cmd --reload
    - 指令說明：
