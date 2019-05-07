@@ -56,7 +56,7 @@
     [名稱]
     IP
 
-修改項目根目錄下的main.yml，來確定的MySQL，nginx的，PHP的版本
+修改項目根目錄下的main.yml，來確定MySQL，nginx，PHP的版本
 
     ```bash
     ＃示例：安裝mysql5.5.49版本和nginx1.8.0版本，nginx180配置來自於group_vars / all文件
