@@ -72,7 +72,7 @@
    - ALTER USER USER() IDENTIFIED BY 'a_A@123456';
    - ALTER USER USER() IDENTIFIED BY 'abc';
    - ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password AS '*0D3CED9BEC10A777AEC23CCC353A8C08A633045E';
-    systemctl restart mysqld.service
+   - systemctl restart mysqld.service
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556498326852_image.png)
 
 ![測試修改後的密碼](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556460004956_image.png)
