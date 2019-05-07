@@ -63,6 +63,7 @@
     grep "A temporary password" /var/log/mysqld.log
     顯示結果：
     [gemgt4gtii@lnmp-lab ~]$ grep "A temporary password" /var/log/mysqld.log
+    
     2019-04-28T12:52:01.986505Z 5 \[Note\] [MY-010454] [Server] A temporary password is generated for root@localhost: 9ur%Osgfdzy.
     -------------------------------------------------------------------------------------
 - 修改MySQL的root密碼
