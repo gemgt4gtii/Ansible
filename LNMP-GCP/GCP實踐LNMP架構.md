@@ -133,20 +133,20 @@
 ----------
 ## PHP—php.ini、www.conf
 - 修改參數-
-    sudo vi /etc/php.ini
-    搜尋 ;cgi.fix_pathinfo=1，將預設1改為0，並將註解去掉。
+   - sudo vi /etc/php.ini
+   - 搜尋 ;cgi.fix_pathinfo=1，將預設1改為0，並將註解去掉。
     → cgi.fix_pathinfo=0
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556502661792_php_conf.png)
 
 - 修改php.d目錄底下的www.conf預設參數
-    sudo vi /etc/php-fpm.d/www.conf
-    -----------------------------------修改內容-------------------------------------------
+    - sudo vi /etc/php-fpm.d/www.conf
+  - 修改內容-----------------------------
     user = nginx
     group = nginx
     listen.owner = nobody
     listen.group = nobody
-    -----------------------------------修改內容-------------------------------------------
-    將註解 ; 去掉。
+  -  -----------------------------------修改內容
+   - 將註解 ; 去掉。
 ![](https://paper-attachments.dropbox.com/s_9C34C7E752749B1D47E4CDE933BFF2127C3DE17D0DAC2EF88166AC9155B2C1BF_1556504401829_php-fpm-www-conf.png)
 
 - 新增測試頁面 info.php
