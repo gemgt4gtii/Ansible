@@ -86,12 +86,12 @@
     sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
 - 重新啟動防火牆
-    sudo firewall-cmd --reload
-    指令說明：
-    firewall-cmd：指令               
-    -zone=public ：指定區域(zone)為=(自定義)
-    -add-port=3306/tcp： 添加端口為=3306/tcp
-    -permanent：此規則永久生效
+   - sudo firewall-cmd --reload
+   - 指令說明：
+   - firewall-cmd：指令               
+   - -zone=public ：指定區域(zone)為=(自定義)
+   - -add-port=3306/tcp： 添加端口為=3306/tcp
+   - -permanent：此規則永久生效
 ----------
 # 設定參數：
 ## Nginx—default.conf
